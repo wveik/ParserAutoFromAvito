@@ -96,26 +96,30 @@ namespace ParserAutoFromAvito {
             string subject = "Нашел: " + _subject;
             string body = _body;
 
-            var smtp = new SmtpClient {
-                Host = "smtp.mail.ru",
-                Port = 25,
-                EnableSsl = true,
-                DeliveryMethod = SmtpDeliveryMethod.Network,
-                UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(fromAddress, fromPassword)
-            };
-            using (
-                var message = new MailMessage(fromAddress, toAddress) {
-                    Subject = subject,
-                    Body = body,
-                    IsBodyHtml = true
-                }) {
-                try {
-                    smtp.Send(message);
-                } catch(Exception ex) {
-                    Console.WriteLine(ex.Message);
+            var toMail = toAddress.Split(';');
+
+            foreach (var mail in toMail) {
+                var smtp = new SmtpClient {
+                    Host = "smtp.mail.ru",
+                    Port = 25,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(fromAddress, fromPassword)
+                };
+                using (
+                    var message = new MailMessage(fromAddress, mail) {
+                        Subject = subject,
+                        Body = body,
+                        IsBodyHtml = true
+                    }) {
+                    try {
+                        smtp.Send(message);
+                    } catch (Exception ex) {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
-            }
+            }           
         }
 
         static string getRequest(string url) {

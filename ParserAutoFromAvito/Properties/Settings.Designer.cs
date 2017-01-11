@@ -37,7 +37,7 @@ namespace ParserAutoFromAvito.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("400000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("250000")]
         public double MaxPrice {
             get {
                 return ((double)(this["MaxPrice"]));

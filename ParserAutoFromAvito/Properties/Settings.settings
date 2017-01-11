@@ -6,7 +6,7 @@
       <Value Profile="(Default)">https://www.avito.ru/moskva/avtomobili/s_probegom?p=1&amp;i=1</Value>
     </Setting>
     <Setting Name="MaxPrice" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">400000</Value>
+      <Value Profile="(Default)">250000</Value>
     </Setting>
     <Setting Name="fromAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
